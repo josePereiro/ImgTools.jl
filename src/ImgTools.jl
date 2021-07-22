@@ -8,7 +8,7 @@ module ImgTools
     import Plots: AbstractPlot
     import DataFileNames: dfname
 
-    include("gif.jl")
+    include("sgif.jl")
     include("grid.jl")
     include("ticks.jl")
     include("sfig.jl")

@@ -49,7 +49,7 @@ function sgif(sourcepaths::Vector{String}, arg, args...;
     _sgif(imgs, arg, args...; kwargs...)
 end
 
-sgif(ps, fn::String = string(tempname(), ".gif"); kwargs...) = sgif(dat, fn; kwargs...)
+sgif(ps, fn::String = string(tempname(), ".gif"); kwargs...) = sgif(ps, fn; kwargs...)
 
 ## ----------------------------------------------------------------------------
 function make_group_gif(freedim, sourcedir::String; 
