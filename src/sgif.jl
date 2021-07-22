@@ -24,7 +24,7 @@ function _make_mat(imgs)
 end
 
 ## ----------------------------------------------------------------------------
-function _sgif(imgs::Vector, arg, args...; 
+function __sgif(imgs::Vector, arg, args...; 
         fps = 10.0
     ) 
     file = dfname(arg, args...)
@@ -35,21 +35,22 @@ function _sgif(imgs::Vector, arg, args...;
     return file
 end
 
-function sgif(ps::Vector{T}, arg, args...; 
+function _sgif(ps::Vector{T}, arg, args...; 
         kwargs...
     ) where {T<:AbstractPlot}
     imgs = plot_to_img.(ps)
-    _sgif(imgs, arg, args...; kwargs...)
+    __sgif(imgs, arg, args...; kwargs...)
 end
 
-function sgif(sourcepaths::Vector{String}, arg, args...; 
+function _sgif(sourcepaths::Vector{String}, arg, args...; 
         kwargs...
     ) 
     imgs = FileIO.load.(sourcepaths)
-    _sgif(imgs, arg, args...; kwargs...)
+    __sgif(imgs, arg, args...; kwargs...)
 end
 
-sgif(ps, fn::String = string(tempname(), ".gif"); kwargs...) = sgif(ps, fn; kwargs...)
+sgif(ps, arg, args...; kwargs...) = _sgif(ps, arg, args...; kwargs...)
+sgif(ps, fn::String = string(tempname(), ".gif"); kwargs...) = _sgif(ps, fn; kwargs...)
 
 ## ----------------------------------------------------------------------------
 function make_group_gif(freedim, sourcedir::String; 
