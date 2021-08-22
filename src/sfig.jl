@@ -1,15 +1,17 @@
-function sfig(p, arg, args...)
+function sfig(p::Plots.Plot, arg, args...)
     file = dfname(arg, args...)
     Plots.savefig(p, file)
     return file
 end
 
-function sfig(ps::Vector, arg, args...; 
-        layout = _auto_layout(length(ps)), 
-        margin = 10
-    )
+function sfig(img::Matrix, arg, args...)
     file = dfname(arg, args...)
-    grid = make_grid(ps; layout, margin)
-    FileIO.save(file, grid)
+    FileIO.save(file, img)
     return file
+end
+
+function sfig(ps::Vector, arg, args...; kwargs...)
+    file = dfname(arg, args...)
+    grid = make_grid(ps; kwargs...)
+    sfig(grid, file)
 end

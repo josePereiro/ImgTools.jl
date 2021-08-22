@@ -12,5 +12,8 @@ module ImgTools
     include("grid.jl")
     include("ticks.jl")
     include("sfig.jl")
+    include("lfig.jl")
+
+    export sfig, lfig, sgif
     
 end
