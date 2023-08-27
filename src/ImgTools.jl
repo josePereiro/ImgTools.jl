@@ -5,6 +5,7 @@ module ImgTools
     import FixedPointNumbers: N0f8
     import Colors: RGB
     import Plots
+    import CairoMakie
     import Plots: AbstractPlot
     import DataFileNames: dfname
 

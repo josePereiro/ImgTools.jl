@@ -108,7 +108,7 @@ end
 function make_grid(imgs::Vector; kwargs...)
     
     img_untyped_ = map(imgs) do img
-        (img isa AbstractPlot) ? plot_to_img(img) : img
+        (img isa Matrix) ? img : _to_img(img)
     end
 
     T = eltype(first(img_untyped_))
